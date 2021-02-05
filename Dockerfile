@@ -11,7 +11,7 @@ WORKDIR /app
 COPY . /app/wp4-links
 
 
-RUN if [ ! -f /app/wp4-links/pom.xml ]; then git clone https://github.com/knaw-huc/wp4-links.git; fi
+RUN if [ ! -f /app/wp4-links/pom.xml ]; then rm -rf wp4-links; git clone https://github.com/knaw-huc/wp4-links.git; fi
 RUN menzo
 RUN cd /app/wp4-links && \
     mvn install
