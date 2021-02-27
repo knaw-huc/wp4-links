@@ -5,6 +5,7 @@ import glob
 import collections
 import re
 from datetime import datetime
+import sys
 
 NAMESPACE = "https://iisg.amsterdam/"
 DATASET_NAME = "links/"
@@ -336,9 +337,14 @@ def convertPersonsToRDF(inputData, outputData):
     print('Time elapsed (hh:mm:ss) {}'.format(time_elapsed))
 
 
-registrations_csv_path = "registrations.csv"
-output_file_registrations = "registrations.nq"
+if len(sys.argv) < 2:
+    workdir = "."
+else:
+    workdir =  sys.argv[1]
+
+registrations_csv_path = workdir + "/registrations.csv"
+output_file_registrations = workdir + "/registrations.nq"
 convertRegistrationsToRDF(registrations_csv_path, output_file_registrations)
-persons_csv_path = "persons.csv"
-output_file_persons = "persons.nq"
+persons_csv_path = workdir + "/persons.csv"
+output_file_persons = workdir + "/persons.nq"
 convertPersonsToRDF(persons_csv_path, output_file_persons)
