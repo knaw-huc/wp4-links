@@ -337,14 +337,19 @@ def convertPersonsToRDF(inputData, outputData):
     print('Time elapsed (hh:mm:ss) {}'.format(time_elapsed))
 
 
-if len(sys.argv) < 2:
-    workdir = "."
+if len(sys.argv) >= 3:
+    indir = sys.argv[1]
+    outdir = sys.argv[2]
+elif len(sys.argv) >= 2:
+    indir = sys.argv[1]
+    outdir = indir  
 else:
-    workdir =  sys.argv[1]
+    indir =  "."
+    outdir = "."
 
-registrations_csv_path = workdir + "/registrations.csv"
-output_file_registrations = workdir + "/registrations.nq"
+registrations_csv_path = indir + "/registrations.csv"
+output_file_registrations = outdir + "/registrations.nq"
 convertRegistrationsToRDF(registrations_csv_path, output_file_registrations)
-persons_csv_path = workdir + "/persons.csv"
-output_file_persons = workdir + "/persons.nq"
+persons_csv_path = indir + "/persons.csv"
+output_file_persons = outdir + "/persons.nq"
 convertPersonsToRDF(persons_csv_path, output_file_persons)
