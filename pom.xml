@@ -29,6 +29,9 @@
 						</goals>
 						<configuration>
 							<archive>
+        						<manifestEntries>
+          							<Multi-Release>true</Multi-Release>
+        						</manifestEntries>
 								<manifest>
 									<mainClass>
 										iisg.amsterdam.wp4_links.App
